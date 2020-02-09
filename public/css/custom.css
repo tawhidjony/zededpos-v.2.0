@@ -1,0 +1,87 @@
+.Top-nav-icon li.nav-item{
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+}
+.Top-nav-icon li.nav-item a img {
+    width: 30px;
+    height: 30px;}
+.Top-nav-icon li.nav-item a img.pos {
+    width: 40px;
+    height: 40px;
+    background-color: #dc3545;
+    border-radius: 50px;
+    padding: 8px;
+}
+
+
+/* select2 design */
+.select2-pos span.select2.select2-container.select2-container--bootstrap4 {
+    width: 100%;
+}
+
+.select2-pos span.selection {
+    width: 100%;
+}
+
+.select2-pos span#select2--container {
+    margin-top: 1px;
+}
+
+.select2-pos span.select2-selection__arrow {
+    margin-top: -1px;
+}
+
+
+/* pos cash */
+.select2-pos-cash span.select2.select2-container.select2-container--bootstrap4 {
+    width: 100%;
+}
+
+.select2-pos-cash span.selection {
+    width: 100%;
+}
+.select2-pos-cash span#select2--container {
+    margin-top: 0px;
+}
+
+.select2-pos-cash span.select2-selection__arrow {
+    margin-top: 0px;
+}
+.select2-pos-cash .select2 .selection span.select2-selection.select2-selection--single{
+    border: none;
+    border-bottom: 1px solid;
+    border-radius: inherit;
+}
+
+/* customerpage */
+
+/* select2 */
+.select-add-product .col-sm-6 .select2 .selection span.select2-selection.select2-selection--single {
+    height: 35px;
+    border: 1px solid #aaaaaa59;
+}
+
+.select-add-product .col-sm-6 .select2 span.selection {
+    width: 100%;
+  
+}
+
+.modal-select2 .select2 .selection span.select2-selection.select2-selection--single {
+    height: 35px;
+    border: 1px solid #aaaaaa59;
+}
+
+.modal-select2 .select2 span.selection {
+    width: 100%;
+  
+}
+
+.modal-select2 .custom-select {
+    width: 100% !important;
+    border: 1px solid #88888859 !important;
+}
+
+.modal-select2 div input[type="input"] {
+    width: 98.5%;
+}

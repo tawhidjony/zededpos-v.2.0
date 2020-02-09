@@ -1,0 +1,87 @@
+.card-title {
+    border-bottom: 1px solid #ced4da;
+    padding: 15px 20px;
+}
+.card-body { 
+    padding: 15px 20px 20px;
+}
+.products-row {
+    padding: 10px 20px;
+    width: 100%;
+}
+.products-row .single-product {
+    border: 1px solid #dddddd;
+    padding: 0px;
+    margin-bottom: 15px;
+}
+.products-row .single-product .title, 
+.products-row .single-product .content {
+    margin: 0px;
+    padding: 0px;
+}
+.products-row .single-product .title {
+    border-bottom: 1px solid #ddd;
+    padding: 0px 0px;
+    position: relative;
+}
+.products-row .single-product .title h5 {
+    padding: 15px 15px;
+    display: block;
+    width: 100%;
+    margin-bottom: 0px;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.products-row .single-product .content {
+    padding: 20px 0px;
+    display: none;
+}
+.products-row .single-product .content .row {
+    margin: 0px;
+}
+
+.single-product.active {
+    border: 1px solid #00acd6;
+}
+.single-product.active .title h5{
+    background: #00acd6;
+    color: #fff;
+}
+
+.products-row .single-product .title span.close-row {
+    position: absolute;
+    right: 0px;
+    top: 1px;
+    height: 53px;
+    width: 55px;
+    background: #00c0ef;
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+    cursor: pointer;
+}
+#purchases-data-table tfoot tr td, 
+#purchases-data-table tbody tr td, 
+#purchases-data-table tbody tr th {
+    border-top : 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+}
+#purchases-data-table tfoot tr td:first-child {
+    text-align: right;
+    font-weight: 700;
+}
+#purchases-data-table tfoot tr td:last-child, 
+#purchases-data-table tbody tr td:last-child {
+    border-right: 1px solid #dee2e6
+}
+#purchases-data-table tfoot tr:last-child td,
+#purchases-data-table tbody tr:last-child td {
+    border-bottom: 1px solid #dee2e6
+}
+#purchases-data-table tbody tr.no-data td {
+    border: 1px solid #dee2e6;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+}

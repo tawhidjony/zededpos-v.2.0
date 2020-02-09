@@ -1,0 +1,25 @@
+
+    
+  #login {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.322), rgba(0, 0, 0, 0.3)), url("8660.jpg");
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+  #login .container #login-row #login-column #login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    height: 350px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+    -webkit-box-shadow: 0px 10px 69px -5px rgba(0,0,0,0.56);
+-moz-box-shadow: 0px 10px 69px -5px rgba(0,0,0,0.56);
+box-shadow: 0px 10px 69px -5px rgba(0,0,0,0.56);
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -85px;
+  }

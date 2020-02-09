@@ -1,0 +1,219 @@
+/*Pos card header css*/
+.pos_header{
+    height: 60px;
+    background-color: #fbfbfb;
+}
+
+/*Pos card body css*/
+.pos
+{
+    height: 350px;
+    overflow-y: scroll;
+    margin-bottom:5px;
+
+}
+.force-overflow
+{
+    min-height:100%;
+}
+
+#Zededpos-style::-webkit-scrollbar-track
+{
+    
+    background-color: #F5F5F5;
+}
+#Zededpos-style::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+}
+#Zededpos-style::-webkit-scrollbar-thumb
+{
+    background-color: #000000;
+}
+
+/*Pos Card Footer*/
+.pos_footer{
+   background-color: #fbfbfb;
+}
+.titleColor{
+    color: #fff;
+}
+.b-t-n{
+    border-top: none!important;
+}
+.td_border_foo{
+    border-bottom:1px solid #f0f0f0;
+}
+.color{
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/*Pos Product side Css*/
+
+
+.product_category_pos{
+    height: 698px !important;
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+}
+/*Pos Product Category slider Css*/
+.pos_category{
+     height: 30px;
+     background-image: linear-gradient(-136deg, rgba(142, 137, 137, 0.84), #545454);
+     border-radius: 50px;
+ }
+.pos_category ul li{
+   text-decoration: none;
+}
+
+.pos_c_padding{
+    padding: 2px;
+    color:white;
+    font-weight: inherit;
+}
+.pos_c_padding:hover{
+    height: 30px;
+    background-image: linear-gradient(-136deg, rgba(142, 137, 137, 0.84), #545454);
+    border-radius: 50px;
+}
+
+/*Pos Sub Category start are here*/
+.pos_sub_category{
+    height: 30px;
+    background-image: linear-gradient(-136deg, rgba(142, 137, 137, 0.84), #545454);
+    border-radius: 50px;
+}
+.pos_s_padding{
+    padding: 2px;
+    color:white;
+    font-weight: inherit;
+}
+.pos_s_padding:hover{
+    height: 30px;
+    background-image: linear-gradient(-136deg, rgba(142, 137, 137, 0.84), #545454);
+    border-radius: 50px;
+}
+.product_category_slider .owl-item.cloned{
+
+    visibility: hidden;
+}
+/*Pos Sub Category End are here*/
+.sub_cat_slider .owl-item.cloned{
+    visibility: hidden;
+}
+.sub_cat_slider .owl-item.cloned{
+    max-width: 115px;
+}
+/*Pos Product Category slider Css*/
+.pos_product_img{
+        width:100%;
+        height:75px
+}
+.pos_product_font{
+    font-weight: 200;
+    margin: 3px 3px 3px 3px;
+}
+.pos_product_scroll
+{
+    height:auto;
+}
+
+/* width */
+#zeded_pos_ctg::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+#zeded_pos_ctg::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+#zeded_pos_ctg::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+#zeded_pos_ctg::-webkit-scrollbar-thumb:hover {
+    background: #555; }
+
+
+.card-footer.pos_footer input.form-control {
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: inherit !important;
+    height: 21px;
+    background: transparent;
+    margin-bottom: 10px !important;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.card-footer.pos_footer select.form-control {
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: inherit !important;
+    height: 21px;
+    background: transparent;
+    margin-bottom: 10px !important;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.return-product-select-parent .select2-container.select2-container--default, 
+.return-product-select-parent .select2-container.select2-container--default span.selection, 
+div#selectOldProductModel .select2-container.select2-container--default, 
+div#selectOldProductModel .select2-container.select2-container--default span.selection {
+    width: 100% !important;
+    max-width: 400px;
+    display: block;
+    height: 28px;
+    
+}
+/* .return-product-select-parent .select2-container.select2-container--default, 
+.return-product-select-parent .select2-container.select2-container--default span.selection {
+    height: 40px;
+} */
+.return-product-select-parent .select2-container.select2-container--default .selection {
+    width: 100% !important; 
+    display: block;
+}
+.return-product-select-parent span.select2-selection.select2-selection--single {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 38px;
+}
+
+.cash-payment-select .select2-container.select2-container--default .selection {
+    width: 100% !important; 
+    display: block;
+}
+.cash-payment-select .select2-container--default .select2-selection--single {
+    border: none !important;
+    border-radius: inherit !important;
+    border-bottom: 1px solid #000 !important;
+}
+
+
+.cash-payment-select .select2-container--default .select2-selection--single{
+    background-color: none !important;
+}
+
+/* pos product qty count ui */
+
+.product-image-qty{
+    position: relative;
+}
+.total-qty{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
+    border-radius: unset;
+    background: #ffffffbd;
+    width: auto;
+    color: #000;
+}
