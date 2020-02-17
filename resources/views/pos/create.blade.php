@@ -155,7 +155,7 @@
                                         <span class=" mt-2"><b>Return Amount :</b></span>
                                         <input type="text" name="return_amount" class="pull-right form-control return-amount" readonly placeholder=" 0.00">
                                      
-                                        <input type="text" name="due_amount" hidden="" class="pull-right form-control due-amount" readonly placeholder=" 0.00">
+                                        <input type="text" name="due_amount" class="pull-right form-control due-amount" readonly placeholder="due 0.00">
                                     
                                         <!-- due -->
                                     </div>

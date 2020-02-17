@@ -28,9 +28,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/products/category', 'PosController@allPorduct');
     Route::get('/products/subcategory', 'PosController@subcatPorduct');
     Route::get('/products/details', 'PosController@getProductDetails');
+
     Route::get('/products/quantitycheck', 'PosController@quantityCheck');
     Route::get('/products/pricecheck', 'PosController@PriceCheck');
     Route::post('/products/sale', 'PosController@sale')->name('product.sell');
+    // return product
+    Route::get('/return/products/details', 'ReturnProductController@getReturnProductDetails');
+
 
     Route::group(['middleware' => 'check_permission'], function () {
 
@@ -71,9 +75,10 @@ Route::group(['middleware' => 'auth'], function () {
         //add new invoice Pos
         Route::resource('new_invoices','AddnewinvoiceController');
         Route::post('/new/invoice', 'AddnewinvoiceController@NewInvoice')->name('new.invoice');
+
         //return Product Pos
         Route::get('return/product','ReturnProductController@HomeIndex')->name('return.index');
-        Route::post('return/product/new','ReturnProductController@edit')->name('return.edit');
+        Route::POST('return/product/new','ReturnProductController@edit')->name('return.edit');
         Route::POST('return-invoice','ReturnProductController@ReturnStore')->name('return.product');
 
         //Wastage

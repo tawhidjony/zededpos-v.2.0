@@ -119,7 +119,9 @@ class PosController extends Controller
     //get Product Details
     public function getProductDetails(Request $request){
         $data = [];
+
         $product_id= (int)$request->product_id;
+        
         if( !empty($product_id)) {
             $productData  = PurchasesProduct::where('product_id', $product_id)->first();
             if($productData) {
@@ -130,6 +132,7 @@ class PosController extends Controller
         }
         return $data;
     }
+
     // Product Quantity Check
     public function quantityCheck(Request $request){
         $data = [];

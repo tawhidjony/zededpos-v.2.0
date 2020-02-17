@@ -6,7 +6,7 @@
 
 
         @foreach($categories as $pos_category)
-           <p>xcvkfvk</p>
+           <p></p>
         @endforeach
 
 

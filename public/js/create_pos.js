@@ -204,6 +204,7 @@
              }
              calcution();
          });//end
+
          //POS Product Price Check
          function priceCheck (productId){
              var sell_price = null;
@@ -237,6 +238,7 @@
              event.preventDefault();
 
              var product= $(this).attr('data-id');
+
              if($('#Pos_Product_table #product-'+product).length > 0){
                  total_qty = quantityCheck (product);
                  var currentQty = parseInt( $('#Pos_Product_table #product-'+product).find('input.qty').val() );
@@ -253,6 +255,7 @@
                     url: ajaxUrls.productDetailsUrl,
                     data: 'product_id=' + product,
                     success: function (response) {
+                       console.log(response);
                        
                         var html = '';
                         var html_print = '';

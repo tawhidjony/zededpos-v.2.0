@@ -17,7 +17,7 @@
                               enctype="multipart/form-data">
                             @csrf
                         <div class="col-sm-12 d-flex justify-content-center return-product-select-parent">
-                            <select type="text" class="form-control w-50 mr-2 return-product-select" name="order_id"
+                            <select type="text" class="form-control w-50 mr-2 return-product-select" name="sale_id"
                                     id="" style="height:38px;" required>
                                 <option value="">Select Return Product</option>
                                 @php
@@ -39,7 +39,7 @@
                             <thead>
                                 <tr>
                                     <th>Old Invoice ID</th>
-                                    <th>Customer Name </th>
+                                    {{-- <th>Customer Name </th> --}}
                                     <th>New Invoice ID </th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
@@ -52,7 +52,7 @@
                                     @foreach($return_P as $Return_Row)
                                     <tr>
                                        <td>#ZEDPOS{{$Return_Row->sale_id}}</td>
-                                       <td>{{$Return_Row->customer->name}}</td>
+                                       {{-- <td>{{$Return_Row->customer->name}}</td> --}}
                                        <td>#ZEDPOS{{$Return_Row->id}}</td>
                                         <td>
                                             @foreach($Return_Row->return_products as $key=> $retuProduct)
