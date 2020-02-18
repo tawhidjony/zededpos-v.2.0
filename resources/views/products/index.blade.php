@@ -11,8 +11,8 @@
                 <div class="card">
                     <!--start box Header-->
                     <div class="card-body">
-                        <h3 >All Product
-                        <a href="{{route('products.create')}}" class="btn btn-info pull-right">Add Product</a>
+                        <h3 >All Item
+                        <a href="{{route('products.create')}}" class="btn btn-info pull-right">Add Item</a>
                         <a href="{{route('product.home')}}" class="btn btn-info pull-right mr-2">Back</a>
                         </h3>
                         <hr/>
@@ -49,9 +49,9 @@
 
                                 <td>{{$row->code_id}}</td>
                                 <td>{{isset($row->category->name) ? $row->category->name : ''}}</td>
-                               
 
-                               
+
+
                                 <td>{{isset($row->pro_model->name) ? $row->pro_model->name : ''}}</td>
 
                                 <td>

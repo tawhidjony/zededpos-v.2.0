@@ -6,7 +6,7 @@
 
 <div class="card-area">
     <div class="row">
-           
+
         <!--Product Start-->
         @if((auth()->user()->can('products.create') || auth()->user()->can('products.index')) || auth()->user()->hasRole('super-admin'))
             <!-- start -->
@@ -14,7 +14,7 @@
             <div class="col-xl-3 col-md-6">
                 <a href="{{route('products.create')}}">
                     <div class="card-content card-no-padding">
-                        <p>Add Product</p>
+                        <p>Add Item</p>
                         <span class="bg-green"><i class="fas fa-pen-square"></i></span>
                     </div>
                 </a>
@@ -25,7 +25,7 @@
             <div class="col-xl-3 col-md-6">
                 <a href="{{route('products.index')}}" class="">
                     <div class="card-content card-no-padding">
-                        <p>All Product</p>
+                        <p>All Items</p>
                         <span class="bg-red"><i class="fas fa-list-alt"></i></span>
                     </div>
                 </a>
@@ -55,7 +55,7 @@
             <div class="col-xl-3 col-md-6">
                 <a href="{{route('units.index')}}">
                     <div class="card-content card-no-padding">
-                        <p>All Product unit</p>
+                        <p>All Item unit</p>
                         <span class="bg-red"><i class="fas fa-list-alt"></i></span>
                     </div>
                 </a>
@@ -64,7 +64,7 @@
             <!--End-->
         @endif
         <!--Product unit End-->
-        
+
          <!--Product Supplier Start-->
         @if((auth()->user()->can('suppliers.create') || auth()->user()->can('suppliers.index')) || auth()->user()->hasRole('super-admin'))
             <!-- Start -->
@@ -72,7 +72,7 @@
             <div class="col-xl-3 col-md-6">
                 <a href="#" data-toggle="modal" data-target="#SupplierModal">
                     <div class="card-content card-no-padding">
-                        <p>Add Product Supplier</p>
+                        <p>Add Item Supplier</p>
                         <span class="bg-green"><i class="fas fa-user"></i></span>
                     </div>
                 </a>
@@ -85,7 +85,7 @@
             <div class="col-xl-3 col-md-6">
                 <a href="{{route('suppliers.index')}}" class="">
                     <div class="card-content card-no-padding">
-                        <p>All Product Supplier</p>
+                        <p>All Item Supplier</p>
                         <span class="bg-red"><i class="fas fa-users"></i></span>
                     </div>
                 </a>

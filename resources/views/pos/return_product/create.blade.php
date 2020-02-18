@@ -86,11 +86,14 @@
                         <!-- pos footer section Start-->
                         <div class="card-footer pos_footer">
                             <div class="row">
+                                <!-- Total -->
                                 <div class="col-sm-6">
                                     <span><b>Total :</b></span>
                                     <input type="text" name="total" class="pull-right form-control total
                                     mb-2" value="{{$return_product_edit->total}}" readonly >
                                 </div>
+                                <!-- Total -->
+                                <!-- Discount -->
                                 <div class="col-sm-6">
                                     <span><b>Discount :</b></span>
                                     <input type="text" name="discount" class="form-control{{ $errors->has('discount') ? ' is-invalid' : '' }} discunt mb-2"
@@ -101,6 +104,8 @@
                                         </span>
                                     @endif
                                 </div>
+                                <!-- Discount -->
+
                                 <!--Grand Total-->
                                 <div class="col-sm-6">
                                     <span><b>Grand Total :</b></span>
@@ -108,19 +113,34 @@
                                     grand-totla" value="{{$return_product_edit->grand_total}}" readonly >
                                     </div>
                                 <!--Grand Total End-->
+
+                                <!--return_amount  -->
                                 <div class="col-sm-6">
                                     <span class=" mt-2"><b>Return Amount :</b></span>
                                     <input type="text" name="return_amount" class="pull-right form-control
                                     return-amount" value="{{$return_product_edit->return_amount}}" readonly >
                                 </div>
-                                <input type="text" name="due_amount" hidden="" class="pull-right form-control
-                                    due-amount" value="due_amount" readonly>
-                                <!--Grand Total 3 start-->
-                                <div class="col-sm-12">
-                                    <input type="text"  class="pull-right form-control extra-payment mt-2"
-                                            name="extra_payment" value="" readonly placeholder="Extra Payment">
+                                <!--return_amount  -->
+
+                                <!--due amount  -->
+                                <div class="col-sm-6">
+                                    <span class=" mt-2"><b>Due Amount :</b></span>
+                                    <input type="text" name="due_amount" class="pull-right form-control current-due" value="{{$return_product_edit->due_amount}}" readonly >
+
+                                    <input type="text"  hidden="" class="pull-right form-control
+                                    due-amount" value="{{$return_product_edit->due_amount}}" readonly>
                                 </div>
-                                <!--Grand Total 3 End-->
+                                <!--due amount  -->
+
+
+
+{{--                                <!--extra_payment start-->--}}
+{{--                                <div class="col-sm-12">--}}
+{{--                                    <input type="text"  class="pull-right form-control due-amount mt-2"--}}
+{{--                                           name="due_amount" value="" readonly placeholder="Extra Payment">--}}
+{{--                                </div>--}}
+{{--                                <!--extra_payment End-->--}}
+
                                 <div class="col-sm-6">
                                     <select required name="pay_method" class="form-control mt-2 {{ $errors->has('pay_method') ? ' is-invalid' : '' }}"
                                             id="PaymentMethods">
@@ -135,23 +155,28 @@
                                     </span>
                                     @endif
                                 </div>
-                                <div class="col-sm-6">
-                                    <input type="number" name="pay_amount" class="form-control payamount mt-2" value="{{$return_product_edit->pay_amount}}">
-                                </div>
-                                    <input type="number" style="display: none" name="sale_id"  value="{{$return_product_edit->id}}">
+
+{{--                                <div class="col-sm-6">--}}
+{{--                                    <input type="number" name="pay_amount" class="form-control payamount mt-2" value="{{$return_product_edit->pay_amount}}">--}}
+{{--                                </div>--}}
+
+
+                                 <input type="number" style="display: none" name="sale_id"  value="{{$return_product_edit->id}}">
+                                 <input type="number" style="display: none" name="id"  value="{{$return_product_edit->id}}">
 
 
                             </div>
+
                             <div class="row" id="ShowPaymentFiled"></div>
                             <button class="btn btn-dark w-100 mt-2">Payment</button>
 
 
 
                             <!--Grand Total 2 start-->
-                            <div class="col-sm-6">
-                                <input type="text" style="display: none" class="pull-right form-control
-                                    grand-totla-two" value="{{$return_product_edit->grand_total}}" readonly >
-                            </div>
+{{--                            <div class="col-sm-6">--}}
+{{--                                <input type="text" --}}{{--style="display: none"--}}{{-- class="pull-right form-control--}}
+{{--                                    grand-totla-two" value="{{$return_product_edit->grand_total}}" readonly >--}}
+{{--                            </div>--}}
                             <!--Grand Total 2 End-->
 
                         </div>

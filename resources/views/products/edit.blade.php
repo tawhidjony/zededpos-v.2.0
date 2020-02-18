@@ -5,7 +5,7 @@
         <div class="card">
 
             <div class="card-body">
-                <h3 class="box-title">Edit Product
+                <h3 class="box-title">Edit Item
                 <a href="{{route('products.index')}}" class="btn btn-info pull-right">Back</a>
                 </h3>
                 <hr/>

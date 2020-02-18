@@ -201,11 +201,19 @@ class PosController extends Controller
     //PDF Ivoice
     public function PdfInvoice($id){
         $allShow_invoice=Sale::find($id);
-        //dd($allShow_invoice->customer);
-        $pdf = PDF::loadView('pos.pdf', array('allShow_invoice'=> $allShow_invoice ));
+//        return $allSell_invoice=DB::table('sale_details')
+//            ->join('sales', 'sales.id', '=', 'sale_details.sale_id')
+//            ->join('products', 'products.id', '=', 'sale_details.product_id')
+//            ->select('sale_details.*', 'products.photo', 'products.name',
+//                     'sales.total','sales.total', 'sales.discount', 'sales.grand_total',
+//                     'sales.return_amount', 'sales.due_amount', 'sales.vat_amount'
+//
+//                    )
+//            ->where('sale_id', $id)
+//            ->get();
 
-        return $pdf->download('invoice.pdf');
-       //return $pdf->stream();
+
+        return view('pos.pdf',compact('allShow_invoice'));
     }
 
     //Pos Product Search

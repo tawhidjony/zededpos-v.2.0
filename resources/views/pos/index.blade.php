@@ -48,9 +48,9 @@
                                     <td>{{$row->created_at}}</td>
                                     <td>
                                         <div class="btn-group m-1">
-                                            {{-- <a href="{{route('invoice.pdf',$row->id)}}">
+                                             <a href="{{route('invoice.pdf',$row->id)}}">
                                                 <button class="btn btn-outline-info  ml-2"><i class="fa fa-print"></i></button>
-                                            </a> --}}
+                                            </a>
 
                                             <form user="deleteForm" method="POST" action="{{route('sell.destroy',$row->id)}}">
                                                 @csrf

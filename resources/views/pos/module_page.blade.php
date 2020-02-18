@@ -34,18 +34,18 @@
                 </div>
             @endif
             <!-- End-->
-            <!-- start-->
-            @if(auth()->user()->can('new_invoices.index') || auth()->user()->hasRole('super-admin'))
-                <div class="col-xl-3 col-md-6 ">
-                    <a href="{{route('new_invoices.index')}}">
-                        <div class="card-content card-no-padding">
-                            <p>Add New Invoice</p>
-                            <span class="bg-green"><i class="fas fa-pen-square"></i></span>
-                        </div>
-                    </a>
-                </div>
-            @endif
-            <!-- End-->
+{{--            <!-- start-->--}}
+{{--            @if(auth()->user()->can('new_invoices.index') || auth()->user()->hasRole('super-admin'))--}}
+{{--                <div class="col-xl-3 col-md-6 ">--}}
+{{--                    <a href="{{route('new_invoices.index')}}">--}}
+{{--                        <div class="card-content card-no-padding">--}}
+{{--                            <p>Add New Invoice</p>--}}
+{{--                            <span class="bg-green"><i class="fas fa-pen-square"></i></span>--}}
+{{--                        </div>--}}
+{{--                    </a>--}}
+{{--                </div>--}}
+{{--            @endif--}}
+{{--            <!-- End-->--}}
             <!-- start-->
             @if(auth()->user()->can('return.index') || auth()->user()->hasRole('super-admin'))
                 <div class="col-xl-3 col-md-6 ">

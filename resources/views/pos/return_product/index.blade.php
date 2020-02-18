@@ -39,20 +39,16 @@
                             <thead>
                                 <tr>
                                     <th>Old Invoice ID</th>
-                                    <th>Customer Name </th>
                                     <th>New Invoice ID </th>
                                     <th>Product Name</th>
-                                    <th>Quantity</th>
-                                    <th>Total Price</th>
-                                    <th>Due</th>
-                                    <th>Payment Amount</th>
+                                    <th>Return Qty</th>
+                                    <th>Return Total Price</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                    {{-- @foreach($return_P as $Return_Row)
+                                    @foreach($return_P as $Return_Row)
                                     <tr>
                                        <td>#ZEDPOS{{$Return_Row->sale_id}}</td>
-                                       <td>{{$Return_Row->customer->name}}</td>
                                        <td>#ZEDPOS{{$Return_Row->id}}</td>
                                         <td>
                                             @foreach($Return_Row->return_products as $key=> $retuProduct)
@@ -64,10 +60,8 @@
                                             @endforeach
                                         </td>
                                         <td>{{$Return_Row->grand_total}}</td>
-                                        <td>{{$Return_Row->due_amount}}</td>
-                                        <td>{{$Return_Row->pay_amount}}</td>
                                     </tr>
-                                    @endforeach --}}
+                                    @endforeach
                             </tbody>
 
                         </table>
