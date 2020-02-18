@@ -16,25 +16,7 @@
             <div class="col-md-6 pl-0 pr-0">
                 <div class="card">
                     <div class="card-body product_category_pos" style="height: 694px !important;">
-                        <!--pos product Search Start-->
-                        <div class="row">
-                            <div class="col-sm-12 mb-3">
 
-                                    <form action="{{url('/product-search')}}" method="get" id="pos-product-search-form">
-                                        <input id="pos-product-search" type="text" placeholder="Search.." name="search" class="form-control" autocomplete="off">
-                                    </form>
-
-                            </div>
-                        </div>
-                        <!--pos product Search End-->
-
-                        <!--pos product category Start-->
-                        <div class="owl-carousel product_category_slider owl-theme">
-                            @include('pos.product_category')
-                        </div>
-                        <div class="owl-carousel owl-theme mt-2 sub_cat_slider">
-                        </div>
-                        <!--pos product category End-->
 
                         <!--pos All product Start-->
                         <div class="row mt-4 pos_product_scroll" id="zeded_pos_ctg">
@@ -43,9 +25,10 @@
                                 <div class="col-lg-3 ">
                                     <a href="" class="productLink" data-id="{{$all_product->product_id}}">
                                         <div class="card">
-                                            <img class="pos_product_img" src="{{URL::to('public/images/'.$all_product->product()->first()->photo)}}" alt="">
+                                            <img class="pos_product_img" src="{{URL::to($all_product->photo)}}" alt="">
+                                            <span class="badge badge-light total-qty ">{{$all_product->qty}}</span>
                                             <span class="text-center pos_product_font" data-toggle="tooltip"
-                                                  title="{{$all_product->product()->first()->name}}">{{str_limit($all_product->product()->first()->name,'8')}}</span>
+                                                  title="{{$all_product->name}}">{{str_limit($all_product->name,'8')}}</span>
                                         </div>
                                     </a>
                                 </div>
@@ -59,7 +42,7 @@
                 </div>
             </div>
             <!--Return Invoice   -->
-            
+
             <!--Return Invoice   -->
             <div class="col-md-6" >
                 <div class="card pos_card">
@@ -70,7 +53,7 @@
                         <div class="card-header pos_header">
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <span><i class="btn btn-default fa fa-shopping-cart pull-left"></i></span>
+
                                 </div>
                                 <div class="col-sm-8">
                                     <select name="customer_id" id="" class="form-control">
@@ -87,7 +70,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
-                                    <a href=""><span><i class="btn btn-info fa fa-users pull-right"></i></span></a>
+
                                 </div>
                             </div>
                         </div>
@@ -192,14 +175,6 @@
             productDetailsUrl : '{{url('/products/details')}}',
             productSearchsUrl : '{{url('/product-search')}}'
         }
-    </script>
-    <!--Form Validatin Script-->
-    <script src="{{asset('assets/plugins/jquery-validation/js/jquery.validate.min.js')}}"></script>
-    <script src="{{asset('assets/owlcarousel/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('js/return_product/return_product_pos.js')}}"></script>
-    <script src="{{asset('assets/select2/dist/js/select2.full.min.js')}}"></script>
-    <script>
-
         $(document).ready(function () {
 
             // validate form on keyup and submit
@@ -214,5 +189,11 @@
 
         });
     </script>
+    <!--Form Validatin Script-->
+    <script src="{{asset('assets/plugins/jquery-validation/js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('assets/owlcarousel/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('js/return_product/return_product_pos.js')}}"></script>
+    <script src="{{asset('assets/select2/dist/js/select2.full.min.js')}}"></script>
+
 
 @endpush
