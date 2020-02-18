@@ -49,7 +49,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                    @foreach($return_P as $Return_Row)
+                                    {{-- @foreach($return_P as $Return_Row)
                                     <tr>
                                        <td>#ZEDPOS{{$Return_Row->sale_id}}</td>
                                        <td>{{$Return_Row->customer->name}}</td>
@@ -67,7 +67,7 @@
                                         <td>{{$Return_Row->due_amount}}</td>
                                         <td>{{$Return_Row->pay_amount}}</td>
                                     </tr>
-                                    @endforeach
+                                    @endforeach --}}
                             </tbody>
 
                         </table>

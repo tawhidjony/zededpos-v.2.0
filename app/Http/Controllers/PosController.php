@@ -15,7 +15,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-use Mike42\Escpos\Printer; 
+use Mike42\Escpos\Printer;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\PrintConnectors\NetworkPrintConnector;
@@ -33,7 +33,7 @@ class PosController extends Controller
         $categories = $this->categories();
         $subCategories = $this->subCategories();
 
-        $all_pos_product = DB::select("select `products`.*, `purchases_products`.`sell_price`, (SELECT SUM(purchases_products.quantity) FROM purchases_products 
+        $all_pos_product = DB::select("select `products`.*, `purchases_products`.`sell_price`, (SELECT SUM(purchases_products.quantity) FROM purchases_products
                             WHERE purchases_products.product_id = products.id
                             GROUP BY products.id) as tqty, (SELECT SUM(sale_details.qty) FROM sale_details
                             WHERE sale_details.product_id = products.id
@@ -131,6 +131,7 @@ class PosController extends Controller
         return $data;
     }
     // Product Quantity Check
+
     public function quantityCheck(Request $request){
         $data = [];
         $product_id= (int)$request->product_id;
@@ -138,16 +139,16 @@ class PosController extends Controller
         if( !empty($product_id)) {
             $productData  = PurchasesProduct::where('product_id', '=', $product_id)->select(DB::raw("SUM(quantity) as tquantity"))->groupBy('product_id')->first();
             $sellProduct  = SaleDetails::where('product_id', '=', $product_id)->select(DB::raw("SUM(qty) as squantity"))->groupBy('product_id')->first();
-            
-            
+
+
             if($productData) {
                 $totalQty = $productData->tquantity;
-                $sellQty  = !empty($sellProduct) ? $sellProduct->squantity : 0; 
-                $avaiableQty = $totalQty - $sellQty; 
+                $sellQty  = !empty($sellProduct) ? $sellProduct->squantity : 0;
+                $avaiableQty = $totalQty - $sellQty;
                 $data['total_qty'] = $avaiableQty;
             }
 
-            
+
         }
         return $data;
     }
@@ -181,7 +182,7 @@ class PosController extends Controller
         $sellProduct = $product_sale->sale()->createMany($data['products']);
         if ($sell && $sellProduct){
             if( !isset($data['withoutprint']) ){
-                $invoicepos = Invoice_setting::all();  
+                $invoicepos = Invoice_setting::all();
                 $this->posPrint($data,$invoicepos);
             }
 
@@ -211,26 +212,26 @@ class PosController extends Controller
     public function getProductByNameKeyword(Request $request){
         $responceData = [];
         $srData=$request->get('search');
-        
+
         if(!empty($srData)){
-            $products_name = DB::select("SELECT purchases_products.*, sell_price, products.name AS name, products.photo AS photo, categories.name AS cat_name, sub_categories.name AS 
-            subcat_name, child_tags.name AS child_tag_name, 
+            $products_name = DB::select("SELECT purchases_products.*, sell_price, products.name AS name, products.photo AS photo, categories.name AS cat_name, sub_categories.name AS
+            subcat_name, child_tags.name AS child_tag_name,
             (SELECT SUM(purchases_products.quantity) FROM purchases_products
                 WHERE purchases_products.product_id = products.id
                 GROUP BY products.id) as total_product_qty,
             (SELECT SUM(sale_details.qty) FROM sale_details
                 WHERE sale_details.product_id = products.id
                 GROUP BY products.id) as total_sell_qty
-            FROM purchases_products 
-            LEFT JOIN products ON products.id = purchases_products.product_id  
-            LEFT JOIN categories ON categories.id = products.category_id 
-            LEFT JOIN sub_categories ON sub_categories.id = products.sub_category_id 
-            LEFT JOIN child_tags ON child_tags.id = products.tag_sub_category_id  
+            FROM purchases_products
+            LEFT JOIN products ON products.id = purchases_products.product_id
+            LEFT JOIN categories ON categories.id = products.category_id
+            LEFT JOIN sub_categories ON sub_categories.id = products.sub_category_id
+            LEFT JOIN child_tags ON child_tags.id = products.tag_sub_category_id
 
-            WHERE products.name LIKE '%$srData%' OR categories.name LIKE '%$srData%' OR sub_categories.name LIKE '%$srData%' OR child_tags.name LIKE '%$srData%' 
+            WHERE products.name LIKE '%$srData%' OR categories.name LIKE '%$srData%' OR sub_categories.name LIKE '%$srData%' OR child_tags.name LIKE '%$srData%'
             GROUP BY purchases_products.product_id");
         }else{
-            $products_name = DB::select("SELECT purchases_products.*, sell_price, products.name AS name, products.photo AS photo, categories.name AS cat_name, sub_categories.name 
+            $products_name = DB::select("SELECT purchases_products.*, sell_price, products.name AS name, products.photo AS photo, categories.name AS cat_name, sub_categories.name
             AS subcat_name, child_tags.name AS child_tag_name,
             (SELECT SUM(purchases_products.quantity) FROM purchases_products
                 WHERE purchases_products.product_id = products.id
@@ -242,11 +243,11 @@ class PosController extends Controller
             LEFT JOIN products ON products.id = purchases_products.product_id
             LEFT JOIN categories ON categories.id = products.category_id
             LEFT JOIN sub_categories ON sub_categories.id = products.sub_category_id
-            LEFT JOIN child_tags ON child_tags.id = products.tag_sub_category_id 
+            LEFT JOIN child_tags ON child_tags.id = products.tag_sub_category_id
             GROUP BY purchases_products.product_id");
         }
         return response()->json($products_name);
-     
+
     }
 
     public function deleteSell($id)
@@ -271,7 +272,7 @@ class PosController extends Controller
         $string = (string)$string;
         $nstring = $nstring.$string;
         return $nstring;
-    } 
+    }
 
     private function addSpaces($string = '', $valid_string_length = 0) {
         if (strlen($string) < $valid_string_length) {
@@ -280,19 +281,19 @@ class PosController extends Controller
                 $string = $string . ' ';
             }
         }
-    
+
         return $string;
-    } 
+    }
 
     private function posPrint($data,$invoicepos){
 
         $connector = new WindowsPrintConnector("RONGTA RPP300 Series Printer");
         $printer = new Printer($connector);
 
-        $products = $data["products"]; 
-       
-        
-        $printer->setJustification(Printer::JUSTIFY_CENTER); 
+        $products = $data["products"];
+
+
+        $printer->setJustification(Printer::JUSTIFY_CENTER);
         /* Name of shop */
         $printer -> selectPrintMode(Printer::MODE_DOUBLE_WIDTH);
         $shopName = $invoicepos->first()->shop_name;
@@ -314,8 +315,8 @@ class PosController extends Controller
         $printer -> setEmphasis(false);
         $printer -> feed();
 
-        /*Item of receipt */ 
-        $printer->text($this->addSpaces('SL', 5).$this->addSpaces('Name', 28).$this->addSpaces('QTY',7).$this->addSpaces('Price', 10)."  \n"); 
+        /*Item of receipt */
+        $printer->text($this->addSpaces('SL', 5).$this->addSpaces('Name', 28).$this->addSpaces('QTY',7).$this->addSpaces('Price', 10)."  \n");
         $printer -> setJustification(Printer::JUSTIFY_LEFT);
         $singleLine = '';
         $i = 1;
@@ -323,20 +324,20 @@ class PosController extends Controller
             $item["product_name"] = $item["product_name"];
             if(strlen($item["product_name"]) < 30){
                 $singleLine = $this->addSpaces((string)$i, 4).$this->addSpaces($item["product_name"], 30).$this->addSpaces($item["qty"], 5).$this->addSpaces($item["price"], 10);
-                $singleLine = (string)$singleLine."\n"; 
+                $singleLine = (string)$singleLine."\n";
                 $printer->text( $singleLine );
             }else{
                 $name = substr($item["product_name"], 0, 28);
                 $singleLine = $this->addSpaces((string)$i, 5).$this->addSpaces($name, 30).$this->addSpaces($item["qty"], 5).$this->addSpaces($item["price"], 10);
-                // $singleLine = (string)$singleLine."\n"; 
-                $singleLine = (string)$singleLine; 
+                // $singleLine = (string)$singleLine."\n";
+                $singleLine = (string)$singleLine;
                 $nextName   = substr($item["product_name"], 28);
-                $singleLine = $singleLine.$this->addSpaces('', 5).$nextName."\n"; 
-                $printer->text( $singleLine ); 
+                $singleLine = $singleLine.$this->addSpaces('', 5).$nextName."\n";
+                $printer->text( $singleLine );
                 $printer -> feed();
-            }  
+            }
            $i++;
-        }  
+        }
         $printer->text("------------------------------------------------");
         $subtotal   =    "                  Subtotal      :".$this->addPreSpaces($data['total'])."\n";
         $vat        =    "                  Vat           :".$this->addPreSpaces($data['vat'].'%')."\n";
@@ -352,7 +353,7 @@ class PosController extends Controller
         $printer -> text($payAm);
         $printer -> text($retAm);
         $printer -> setEmphasis(false);
-        
+
         /* Footer */
         $printer -> feed(2);
         $printer -> setJustification(Printer::JUSTIFY_CENTER);
