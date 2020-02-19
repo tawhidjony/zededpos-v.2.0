@@ -23,15 +23,12 @@ class ReturnProductController extends Controller
     //Return Product Index
     Public function edit(Request $request){
         $order_id = $request->all()['order_id'];
-
-        //$all_pos_product=SaleDetails::where('sale_id', $order_id)->get();
         $all_pos_product=DB::table('sale_details')
-                ->join('products', 'products.id', '=', 'sale_details.product_id')
-                ->select('sale_details.*', 'products.photo', 'products.name')
-                ->where('sale_id', $order_id)
-                ->get();
+                            ->join('products', 'products.id', '=', 'sale_details.product_id')
+                            ->select('sale_details.*', 'products.photo', 'products.name')
+                            ->where('sale_id', $order_id)
+                            ->get();
         $return_product_edit=Sale::find($order_id);
-
         return view('pos.return_product.create',compact('return_product_edit','all_pos_product'));
     }
 
@@ -39,19 +36,20 @@ class ReturnProductController extends Controller
     public function ReturnStore(Request $request){
         $data = $request->all();
         $products = $data['products'];
-        $t= count($products);
-        for($i=1; $i<=$t; $i++){
-             $sd=SaleDetails::where('sale_id',$data['sale_id'])
-                             ->where('product_id',$products[$i]['product_id']);
-                             $sd->decrement('qty',$products[$i]['qty']);
-                             $sd->decrement('subtotal',$products[$i]['subtotal']);
+        $product_keys = array_keys($products);
+        foreach ($product_keys as $value){
+            $sd = SaleDetails::where('sale_id', $data['sale_id'])
+                ->where('product_id', $products[$value]['product_id']);
+            $sd->decrement('qty',$products[$value]['qty']);
+            $sd->decrement('subtotal',$products[$value]['subtotal']);
 
         }
-
-       // $invoice_sale = ReturnProduct::create($data);
-        //$invoice_sale->return_products()->createMany($data['products']);
+        $sale_return = Sale::where('id', $data['id']);
+        $sale_return->decrement('total',$data['total']);
+        $sale_return->decrement('grand_total',$data['grand_total']);
+        SaleDetails::where('qty', '=', '0')->delete();
+        $invoice_sale = ReturnProduct::create($data);
+        $invoice_sale->return_products()->createMany($data['products']);
         return redirect()->route('return.index')->with($this->create_old_invoice_message);
-
-
     }
 }

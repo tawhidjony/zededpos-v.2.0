@@ -110,7 +110,8 @@ $(document).ready(function () {
 
     //POS Total Product Calculating
     function calcution(){
-        var totalprice = 0, grandTotla= 0, discunt = 0, payamount = 0, returnAmount=0, due=0,grandTotla2=0;
+        var totalprice = 0, grandTotla= 0, discunt = 0, payamount = 0, returnAmount=0, due=0, currentdue = 0, grandTotla2=0;
+
         $('#Pos_Product_table tbody tr').each(function (key, el) {
             var tr          = $(el),
                 qty         = parseInt( tr.find('input.qty').val() ),
@@ -120,49 +121,68 @@ $(document).ready(function () {
             totalprice  += subtotal;
             tr.find('input.subtotal').val(subtotal);
         });
+
         discunt = $('input.discunt').val() != '' ? parseInt( $('input.discunt').val() ) : 0;
-        payamount = $('input.payamount').val() != '' ? parseInt( $('input.payamount').val() ) : 0;
-        grandTotalTwo = $('input.grand-totla-two').val() != '' ? parseInt( $('input.grand-totla-two').val() ) : 0;
-        
+        due = $('input.due-amount').val() != '' ? parseInt( $('input.due-amount').val() ) : 0;
+        // payamount = $('input.payamount').val() != '' ? parseInt( $('input.payamount').val() ) : 0;
+        // grandTotalTwo = $('input.grand-totla-two').val() != '' ? parseInt( $('input.grand-totla-two').val() ) : 0;
+
         grandTotla = ( totalprice - ( ( totalprice * discunt) / 100 ) );
-        extraPaymentAmount = (grandTotla - grandTotalTwo);
-        returnAmount = ( grandTotla - payamount);
-        due = ( grandTotla - payamount);
+        currentdue = (due - grandTotla);
+
+         returnAmount = ( grandTotla - due);
+
+        // extraPaymentAmount = (grandTotla - grandTotalTwo);
+
 
         if(totalprice){
             $('.pos_footer').find('.total').val(totalprice);
         }else{
             $('.pos_footer').find('.total').val(totalprice);
         }
+
         if(grandTotla) {
             $('.pos_footer').find('.grand-totla').val(grandTotla);
         }else{
             $('.pos_footer').find('.grand-totla').val(grandTotla);
         }
-        //
-        if(grandTotalTwo){
-            $('.pos_footer').find('').val(grandTotalTwo);
-        }
-        if(grandTotla > grandTotalTwo){
-            $('.pos_footer').find('.extra-payment').val(Math.abs(extraPaymentAmount) );
-        }else {
-            $('.pos_footer').find('.extra-payment').val(0);
-        }
 
-        //
-        if(payamount > grandTotla){
-            $('.pos_footer').find('.return-amount').val(Math.abs(returnAmount) );
-            $('.pos_footer').find('.due-amount').val(0);
-        }
-
-        if (grandTotla > payamount){
-            $('.pos_footer').find('.due-amount').val(due);
+        if(returnAmount >= currentdue) {
+            $('.pos_footer').find('.return-amount').val(returnAmount);
+        }else{
             $('.pos_footer').find('.return-amount').val(Math.abs(0) );
         }
-        if (grandTotla == payamount) {
-            $('.pos_footer').find('.due-amount').val(0);
-            $('.pos_footer').find('.return-amount').val(Math.abs(0) );
+
+        if( currentdue >= returnAmount) {
+            $('.pos_footer').find('.current-due').val(currentdue);
+        }else{
+            $('.pos_footer').find('.current-due').val(Math.abs(0) );
         }
+
+        // //
+        // if(grandTotalTwo){
+        //     $('.pos_footer').find('').val(grandTotalTwo);
+        // }
+        // if(grandTotla > grandTotalTwo){
+        //     $('.pos_footer').find('.extra-payment').val(Math.abs(extraPaymentAmount) );
+        // }else {
+        //     $('.pos_footer').find('.extra-payment').val(0);
+        // }
+        //
+        // //
+        // if(payamount > grandTotla){
+        //     $('.pos_footer').find('.return-amount').val(Math.abs(returnAmount) );
+        //     $('.pos_footer').find('.due-amount').val(0);
+        // }
+        //
+        // if (grandTotla > payamount){
+        //     $('.pos_footer').find('.due-amount').val(due);
+        //     $('.pos_footer').find('.return-amount').val(Math.abs(0) );
+        // }
+        // if (grandTotla == payamount) {
+        //     $('.pos_footer').find('.due-amount').val(0);
+        //     $('.pos_footer').find('.return-amount').val(Math.abs(0) );
+        // }
     }//end
 
     //POS Product Quantity Check

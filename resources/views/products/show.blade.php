@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
             <div class="card-body">
-                <h3 class="box-title">Single Product Details
+                <h3 class="box-title">Single Item Details
                     <a href="{{route('products.index')}}" class="btn btn-info pull-right">Back</a>
                 </h3>
                 <hr/>
